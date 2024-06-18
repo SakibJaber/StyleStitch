@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:style_stitch/features/login/login_bottomsheet.dart';
+import 'package:style_stitch/features/register/register_page.dart';
 import 'package:style_stitch/theme/colors.dart';
 
 class CategoriesPage extends StatefulWidget {
@@ -12,11 +12,10 @@ class CategoriesPage extends StatefulWidget {
 class _CategoriesPageState extends State<CategoriesPage> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-backgroundColor: AppColor.scaffoldBgColor,
-      body: SafeArea(
-        child: LoginBottomsheet(),
-      ),
+    return Scaffold(
+      backgroundColor: AppColor.scaffoldBgColor,
+      // body: const SafeArea(child: Text('Category')),
+      body: RegisterPage(),
     );
   }
 }

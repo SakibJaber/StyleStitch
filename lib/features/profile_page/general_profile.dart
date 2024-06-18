@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:style_stitch/components/profile_item.dart';
+import 'package:style_stitch/components/solid_button.dart';
+import 'package:style_stitch/features/login/login_bottomsheet.dart';
 import 'package:style_stitch/features/profile_page/profile_footer.dart';
 import 'package:style_stitch/theme/colors.dart';
 
@@ -46,30 +49,16 @@ class GeneralProfile extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                    bottom: 20,
-                    left: 165,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColor.buttonColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4.0),
-                          )),
-                      onPressed: () {},
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width * .43,
-                        child: const Center(
-                          child: Text(
-                            'LOG IN/SIGN UP',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12.5,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 1.05,
-                            ),
-                          ),
-                        ),
-                      ),
-                    )),
+                  bottom: 20,
+                  left: 165,
+                  child: SolidButton(
+                    onPressed: () {
+                      Get.bottomSheet(LoginBottomsheet());
+                    },
+                    btnText: 'LOG IN/SIGN UP',
+                    width: 0.43,
+                  ),
+                ),
               ],
             ),
           ),
@@ -78,21 +67,24 @@ class GeneralProfile extends StatelessWidget {
           ),
           Container(
             color: AppColor.whiteColor,
-            child: const Column(
+            child: Column(
               children: [
                 ProfileItem(
                   title: 'Order',
                   assetName: 'orders.png',
                   subtitle: 'Check your order',
                   isLast: false,
+                  onTap: () {
+                    Get.bottomSheet(LoginBottomsheet());
+                  },
                 ),
-                ProfileItem(
+                const ProfileItem(
                   title: 'Help Center',
                   assetName: 'help-desk.png',
                   subtitle: 'Help regarding your recent purchase',
                   isLast: false,
                 ),
-                ProfileItem(
+                const ProfileItem(
                   title: 'WishList',
                   assetName: 'wishlist.png',
                   subtitle: 'Your most loved style',
@@ -128,7 +120,10 @@ class GeneralProfile extends StatelessWidget {
           const SizedBox(
             height: 14.0,
           ),
-           Text('APP VERSION 0.0.1',style: TextStyle(color: AppColor.textColor2,fontSize: 11),),
+          Text(
+            'APP VERSION 0.0.1',
+            style: TextStyle(color: AppColor.textColor2, fontSize: 11),
+          ),
           const SizedBox(
             height: 18.0,
           ),

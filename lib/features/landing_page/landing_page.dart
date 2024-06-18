@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:style_stitch/features/Categories/categories_page.dart';
+import 'package:style_stitch/features/categories/categories_page.dart';
 import 'package:style_stitch/features/home_page/home_page.dart';
 import 'package:style_stitch/features/profile_page/profile_page.dart';
 import 'package:style_stitch/features/sp_icon/sp_icon.dart';
