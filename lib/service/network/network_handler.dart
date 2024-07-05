@@ -12,8 +12,16 @@ class NetworkHandler {
     return response.body;
   }
 
+  static Future<dynamic> get(String endpoint, String ?token) async {
+    var response = await client.get(buildUrl(endpoint), headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer ${await getToken()}"
+    });
+    return response.body;
+  }
+
   static Uri buildUrl(String endpoint) {
-    String host = 'http://192.168.0.107:3000/';
+    String host = 'http://192.168.0.105:3000/';
     // String host = 'http://localhost:3001/';
     final apiPath = host + endpoint;
     return Uri.parse(apiPath);

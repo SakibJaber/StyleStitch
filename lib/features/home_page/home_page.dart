@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:style_stitch/features/product_page/product_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,10 +11,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('home'),
-      ),
-    );
+    return ProductPage();
+    // return const Scaffold(
+    //   body: Center(
+    //     child: Text('home'),
+    //   ),
+    // );
   }
 }

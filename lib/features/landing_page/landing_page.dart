@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:style_stitch/features/categories/categories_page.dart';
 import 'package:style_stitch/features/home_page/home_page.dart';
+import 'package:style_stitch/features/landing_page/controller/landing_page_controller.dart';
 import 'package:style_stitch/features/profile_page/profile_page.dart';
 import 'package:style_stitch/features/sp_icon/sp_icon.dart';
 
 class LandingPage extends StatefulWidget {
-  const LandingPage({super.key});
+  const LandingPage({
+    super.key,
+  });
 
   @override
   State<LandingPage> createState() => _LandingPageState();
 }
 
 class _LandingPageState extends State<LandingPage> {
+  LaandingPageController controller = Get.put(LaandingPageController());
+
   int currentIndex = 0;
   List<Widget> pages = [
     const HomePage(),
@@ -34,21 +40,21 @@ class _LandingPageState extends State<LandingPage> {
           BottomNavigationBarItem(
             icon: SPIcon(
               assetname: "logo-black.png",
-         isSelected: 0==currentIndex,
+              isSelected: 0 == currentIndex,
             ),
             label: "Home",
           ),
           BottomNavigationBarItem(
             icon: SPIcon(
               assetname: "categories.png",
-               isSelected: 1==currentIndex,
+              isSelected: 1 == currentIndex,
             ),
             label: "Categories",
           ),
           BottomNavigationBarItem(
             icon: SPIcon(
               assetname: "profile.png",
-            isSelected: 2==currentIndex,
+              isSelected: 2 == currentIndex,
             ),
             label: "Profile",
           ),

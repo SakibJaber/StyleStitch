@@ -8,4 +8,6 @@ class AppColor {
   static Color textColor2 = const Color(0xff575969);
   static Color captionColor = const Color(0xffbcbabf);
   static Color scaffoldBgColor = const Color(0xfff3f3f3);
+  static Color gold = const Color(0xffFFD700);
+  static Color puregold = const Color(0xffE5B80B);
 }

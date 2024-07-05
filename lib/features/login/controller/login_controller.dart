@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:style_stitch/features/landing_page/landing_page.dart';
 import 'package:style_stitch/features/login/model/login_model.dart';
 import 'package:style_stitch/features/register/register_page.dart';
@@ -10,6 +11,18 @@ import 'package:style_stitch/theme/colors.dart';
 
 class LoginController extends GetxController {
   TextEditingController loginEditController = TextEditingController();
+
+  late SharedPreferences prefs;
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+  }
+
+  void initSharedPref() async {
+    prefs = await SharedPreferences.getInstance();
+  }
 
   void login() async {
     LoginModel loginModel = LoginModel(phone: loginEditController.text);
@@ -30,11 +43,15 @@ class LoginController extends GetxController {
       await NetworkHandler.storeToken(data['token']);
     }
 
-    if (data['message'] == "User Login Successfully") {
-      if (data['user']['email'] == null) {
+    if (data['message'] == "User Logged in Successfully") {
+      // var myToken = data['token'];
+      // prefs.setString('token', myToken);
+      if (data['user'] == null) {
         Get.to(() => RegisterPage());
       } else {
-        Get.to(() =>  LandingPage());
+        // ignore: prefer_const_constructors
+        await NetworkHandler.storeToken(data['token']);
+        Get.to(() => const LandingPage());
       }
     }
   }
